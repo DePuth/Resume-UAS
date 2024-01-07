@@ -1,0 +1,81 @@
+#include <iostream>
+
+using namespace std;
+
+int main () {
+    int pilih, i, cucok;
+    cout << "Jawaban No 1\n";
+    cout << "Jawaban No 2\n";
+    cout << "Jawaban No 3\n";
+    cout << "Pilihan Anda [1, 2, 3]: ";
+    cin >> pilih;
+
+    switch (pilih) {
+
+    case 1:
+    cout << "\nMasukkan Batas Nilai : ";
+    cin >> cucok;
+
+    for (int row = 1; row <= cucok; row++) {
+        for(int col = 1; col <=row; col++) {
+            cout << col << " " ;
+        }
+        cout << "\n";
+    }
+    break;
+    
+    case 2:
+    string ukuran;
+    int hg,mk;
+    string merk[]={"","Adidas","IMP","Uniqlo"};
+    string ukuran_bj[]={"","s","m","l","xl"};
+    int harga[]={0,200000,220000,250000,250000};
+    int merk_baju=sizeof(merk)/sizeof(*merk);
+    int baju=sizeof(ukuran_bj)/sizeof(*ukuran_bj);
+    int harga_baju=sizeof(harga)/sizeof(*harga);
+
+    //input kode baju
+    cout << "Merk baju" << endl;
+    cout << "1. Adidas" << endl;
+    cout << "2. IMP" << endl;
+    cout << "3. Uniqlo" << endl;
+    merek:
+    cout << "Masukan Kode Baju :";
+    cin >> mk;
+    if (mk==0){
+        goto merek;
+    }
+    //input ukuran baju
+    cout << "Masukan ukuran baju [s/m/l/xl] : ";
+    cin >> ukuran;
+        for (i=0;i<=baju;i++){
+            if (ukuran==ukuran_bj[i]){
+                hg=i;
+            }
+        }
+
+    //cetak hasil
+    cout << "Merek baju = " << merk[mk] << endl;
+    cout << "Ukuran baju = " << ukuran_bj[hg] << endl;
+    cout << "Harga baju = " << harga[hg] << endl;
+    cout << "--------------------------------------"; 
+
+    break;
+    }
+
+    //nomor 3
+    cout << endl;
+    cout << "--------------------------------------" << endl;
+    cout << "Program mencari bilangan faktorial" << endl;
+    int a,b,hasil;
+    hasil = 1;
+    cout << "Masukan angka : ";
+    cin >> a;
+    for (b=1;b<=a;b++){
+        hasil=hasil*b;
+    }
+    cout << "Faktorial dari "<< a << " adalah " << hasil;
+    return 0;
+
+}
+
