@@ -1,0 +1,106 @@
+-- Active: 1701238323553@@127.0.0.1@3306@UAS
+use UAS;
+
+drop table pegawai;
+
+desc pegawai;
+
+create table pegawai (
+    KodePegawai int,
+    NamaPegawai varchar (30),
+    TngLahir varchar (15),
+    Alamat varchar (40),
+    KodeJabatan int,
+    KodeDivisi int
+) ;
+
+select * from pegawai;
+insert into pegawai values (123,'J. Smith','12/12/1985','Jl. Anggrek 10',03,21);
+insert into pegawai values (128,'Julienn Waar','14/5/1975','Komplek Hankam 22 No.1',03,21);
+insert into pegawai values (154,'J. Patel','23/10/1960','Jl. Howitzer Raya 15',01,21);
+insert into pegawai values (162,'A. Robin','21/11/1974','Jl. Merbabu 33',03,22);
+insert into pegawai values (137,'Saleem Admed','15/01/1972','Depok Residence Blok A 1 No.5',03,23);
+insert into pegawai values (124,'Andy Carpenter','20/08/1971','Kamandoran City',02,24);
+insert into pegawai values (136,'Betty Brown','08/08/1977','Jl. Gelatik IV No.2',03,25);
+insert into pegawai values (175,'D. August','12/02/1968','Jl. Kuda Putih 77',02,27);
+
+drop table jabatan;
+desc jabatan;
+create table jabatan (
+    KodeJabatan int,
+    Jabatan varchar (15),
+    GajiPokok int
+);
+
+select * from jabatan;
+insert into jabatan values (01,'Direktur',60000000);
+insert into jabatan values (02,'Manager',25000000);
+insert into jabatan values (03,'Staff',10000000);
+
+drop table divisi;
+desc divisi;
+create table divisi (
+    KodeDivisi int,
+    NamaDivisi varchar (20)
+);
+
+select * from divisi;
+insert into divisi values (21,'Penjualan');
+insert into divisi values (22,'Administrasi');
+insert into divisi values (23,'Akuntansi');
+insert into divisi values (24,'Marketing');
+insert into divisi values (25,'System');
+insert into divisi values (27,'Keuangan');
+
+/*
+Jawaban
+*/
+
+/* A */
+
+select * from pegawai;
+select NamaPegawai,KodeJabatan
+from pegawai
+where KodeJabatan="3"
+
+/* B */
+select KodePegawai, NamaPegawai, Alamat
+from pegawai
+order by NamaPegawai asc;
+
+/* C */
+
+select NamaPegawai, GajiPokok
+from jabatan,pegawai
+where GajiPokok > 10000000
+
+/* D */
+
+alter table pegawai
+add Umur int;
+
+update pegawai set umur = '39' where KodePegawai ='123';
+update pegawai set umur = '49' where KodePegawai ='128';
+update pegawai set umur = '64' where KodePegawai ='154';
+update pegawai set umur = '50' where KodePegawai ='162';
+update pegawai set umur = '52' where KodePegawai ='137';
+update pegawai set umur = '53' where KodePegawai ='124';
+update pegawai set umur = '47' where KodePegawai ='136';
+update pegawai set umur = '56' where KodePegawai ='175';
+
+select * from pegawai;
+/* E */
+
+select AVG(Umur)
+from pegawai;
+
+/* D (Umur) 
+
+39
+49
+64
+50
+52
+53
+47
+56
